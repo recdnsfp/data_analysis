@@ -128,6 +128,10 @@ opendns_freq_val <- get_frequent_values(df_opendns, fields2mark)
 df_google_marked <- mark_data(df_google, google_freq_val)
 df_opendns_marked <- mark_data(df_opendns, opendns_freq_val)
 
+# check frequent values
+check_frequent_values(google_freq_val)
+check_frequent_values(opendns_freq_val)
+
 # save data
 write.arff(x = df_google_marked, file="../measurements/datasets/google-marked.arff")
 write.arff(x = df_opendns_marked, file="../measurements/datasets/opendns-marked.arff")
