@@ -44,7 +44,7 @@ for(field in fields2mark) {
 ggplot(df_plot) + 
   geom_bar(aes(value,fill=s),position="dodge") + 
   scale_x_discrete(labels=labs) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1), plot.title = element_text(hjust = 0.5), legend.title=element_blank()) + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), plot.title = element_text(hjust = 0.5), legend.title=element_blank()) + 
   xlab("Feature") +
   ylab("Number of observations") +
   ggtitle("Deviation from the mode") +
