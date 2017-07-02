@@ -50,6 +50,7 @@ format_data <- function(d, pattern=".") {
 # 
 get_frequent_values <- function(d, fields=names(d)) {
   values = list()
+  stopifnot(length(fields)<32)
   for(field in fields){
     freq <- sort(table(d[,field], useNA = "ifany"), decreasing = T)[1]/nrow(d)
     values[[field]] <- list(names(freq),unname(freq))
@@ -91,6 +92,7 @@ check_frequent_values <- function(freq_val, p=0.5) {
 # Data frame d enriched with four columns - two numeric vectors: hijack, hijack_bin and two factors: hijack_f, hijack_bin_f
 #
 mark_data <- function(d, freq_val) {
+  stopifnot(length(names(freq_val))<32)
   i=0
   d$hijack <- 0
   for(field in names(freq_val)) {
