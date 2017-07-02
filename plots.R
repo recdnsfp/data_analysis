@@ -21,6 +21,7 @@ require(bitops)
 # load data
 df_google_marked <- read.arff("../measurements/datasets/google-marked.arff")
 df_opendns_marked <- read.arff("../measurements/datasets/opendns-marked.arff")
+fields2mark <- readLines("../measurements/datasets/fields2mark")
 
 df_all <- cbind(df_google_marked,data.frame(s="google"))
 df_all <- rbind(df_all, cbind(df_opendns_marked,data.frame(s="opendns")))
