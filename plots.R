@@ -49,3 +49,33 @@ ggplot(df_plot) +
   ylab("Number of observations") +
   ggtitle("Deviation from the mode") +
   ggsave("plots/deviation_from_the_mode.png")
+
+
+# ---- GOOGLE_INC: DSFAIL_RCODE vs WHOAMI_IP  ----
+
+df_google_marked %>%
+  filter(whoami_net=="GOOGLE_INC") %>%
+  select(probe_id,dsfail_rcode,whoami_ip,whoami_asn) %>%
+  ggplot() +
+  geom_bar(aes(whoami_ip,fill=dsfail_rcode),position="dodge") +
+  theme(axis.text.y = element_text(size=2.5), plot.title = element_text(hjust = 0.5), legend.title=element_blank()) +
+  xlab("IP address") +
+  ylab("Number of observations") +
+  ggtitle("DSFAIL_RCODE for whoami_net=='GOOGLE_INC'") +
+  coord_flip() +
+  ggsave("plots/google_dsfail_rcode_vs_whomai_ip.png",width = 5, height=15)
+
+
+# ---- OPENDNS_LLC: DSFAIL_RCODE vs WHOAMI_IP ----
+
+df_opendns_marked %>%
+  filter(whoami_net=="OPENDNS_LLC") %>%
+  select(probe_id,dsfail_rcode,whoami_ip) %>%
+  ggplot() +
+  geom_bar(aes(whoami_ip,fill=dsfail_rcode),position="dodge") +
+  theme(axis.text.y = element_text(size=2.5), plot.title = element_text(hjust = 0.5), legend.title=element_blank()) +
+  xlab("IP address") +
+  ylab("Number of observations") +
+  ggtitle("DSFAIL_RCODE for whoami_net=='OPENDNS_LLC'") +
+  coord_flip() +
+  ggsave("plots/opendns_dsfail_rcode_vs_whomai_ip.png",width = 5, height=15)
